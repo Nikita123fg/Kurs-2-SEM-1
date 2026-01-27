@@ -1,0 +1,81 @@
+import java.util.ArrayList;
+
+class Animal {
+    String name;
+    int age;
+    
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void makeSound() {
+        System.out.println("Животное издаёт звук");
+    }
+    
+    public void info() {
+        System.out.println(name + ", " + age + " лет");
+    }
+}
+
+class Dog extends Animal {
+    String breed;
+    
+    public Dog(String name, int age, String breed) {
+        super(name, age);
+        this.breed = breed;
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("Гав-гав!");
+    }
+}
+
+class Cat extends Animal {
+    public Cat(String name, int age) {
+        super(name, age);
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("Мяу!");
+    }
+}
+
+class Bird extends Animal {
+    public Bird(String name, int age) {
+        super(name, age);
+    }
+    
+    @Override
+    public void makeSound() {
+        System.out.println("Чик-чирик!");
+    }
+}
+
+public class InheritancePractice {
+    public static void main(String[] args) {
+        Dog dog = new Dog("Бобик", 3, "Такса");
+        Cat cat = new Cat("Мурка", 2);
+        
+        System.out.println("Основное задание:");
+        dog.makeSound();
+        cat.makeSound();
+        
+        System.out.println("\nДополнительные задания:");
+        dog.info();
+        cat.info();
+        
+        Bird bird = new Bird("Кеша", 1);
+        ArrayList<Animal> animals = new ArrayList<>();
+        animals.add(dog);
+        animals.add(cat);
+        animals.add(bird);
+        
+        System.out.println("\nЗвуки из списка:");
+        for (Animal animal : animals) {
+            animal.makeSound();
+        }
+    }
+}
